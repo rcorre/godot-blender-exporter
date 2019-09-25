@@ -414,8 +414,8 @@ void node_mapping(vec3 vec, mat4 mat, vec3 minvec, vec3 maxvec, float domin,
 """),
 
     ShaderFunction(code="""
-void node_math_no_clamp(float value1, float value2, out float result) {
-    result = value1 +  value2;
+void node_math_add_no_clamp(float value1, float value2, out float result) {
+    result = value1 + value2;
 }
 """),
 
@@ -500,6 +500,24 @@ void node_math_arctangent_no_clamp(float value, out float result) {
 """),
 
     ShaderFunction(code="""
+void node_math_greater_than_no_clamp(float value1, float value2, out float result) {
+    if (value1 > value2)
+        result = 1.0;
+    else
+        result = 0.0;
+}
+"""),
+
+    ShaderFunction(code="""
+void node_math_less_than_no_clamp(float value1, float value2, out float result) {
+    if (value1 < value2)
+        result = 1.0;
+    else
+        result = 0.0;
+}
+"""),
+
+    ShaderFunction(code="""
 void node_math_add_clamp(float value1, float value2, out float result) {
     result = clamp(value1 + value2, 0.0, 1.0);
 }
@@ -565,6 +583,24 @@ void node_math_arccosine_clamp(float value, out float result) {
     ShaderFunction(code="""
 void node_math_arctangent_clamp(float value, out float result) {
     result = clamp(atan(value), 0.0, 1.0);
+}
+"""),
+
+    ShaderFunction(code="""
+void node_math_greater_than_clamp(float value1, float value2, out float result) {
+    if (value1 > value2)
+        result = 1.0;
+    else
+        result = 0.0;
+}
+"""),
+
+    ShaderFunction(code="""
+void node_math_less_than_clamp(float value1, float value2, out float result) {
+    if (value1 < value2)
+        result = 1.0;
+    else
+        result = 0.0;
 }
 """),
 
